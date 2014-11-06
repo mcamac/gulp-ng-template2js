@@ -16,7 +16,7 @@ var TEMPLATE_MODULE_STR =
   '  $templateCache.put("${moduleName}",\n' +
   '${templateHtml}\n' +
   '  );\n' +
-  '});';
+  '}]);\n';
 
 var templateModuleTemplate = _.template(TEMPLATE_MODULE_STR);
 
