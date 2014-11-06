@@ -15,7 +15,8 @@ var TEMPLATE_MODULE_STR =
   'angular.module("${moduleName}", []).run(["$templateCache", function ($templateCache) {\n' +
   '  $templateCache.put("${moduleName}",\n' +
   '${templateHtml}\n' +
-  '  );\n';
+  '  );\n' +
+  '});';
 
 var templateModuleTemplate = _.template(TEMPLATE_MODULE_STR);
 
