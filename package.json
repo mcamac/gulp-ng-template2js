@@ -1,7 +1,7 @@
 {
 	"name": "gulp-ng-template2js",
 	"version": "0.1.0",
-	"description": "",
+	"description": "Gulp plugin to convert Angular HTML and Jade templates to $templateCache JS",
 	"author": {
 		"name": "Martin Camacho"
 	},
