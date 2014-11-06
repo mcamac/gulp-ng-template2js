@@ -12,7 +12,7 @@ function hasJadeExt(filepath) {
 var lastFile;
 
 var TEMPLATE_MODULE_STR =
-  'angular.module("${moduleName}.templates", []).run(["$templateCache", function ($templateCache) {\n' +
+  'angular.module("${moduleName}", []).run(["$templateCache", function ($templateCache) {\n' +
   '  $templateCache.put("${moduleName}",\n' +
   '${templateHtml}\n' +
   '  );\n';
