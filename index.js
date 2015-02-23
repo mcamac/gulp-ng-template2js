@@ -1,5 +1,6 @@
 'use strict';
 
+var gutil = require('gulp-util');
 var path = require('path');
 var jade = require('jade');
 var through = require('through');
@@ -34,9 +35,14 @@ module.exports = function (opts) {
   var templateModules = '';
   var templateModuleNames = [];
 
-  function templateToJs(file, callback) {
+  function templateToJs(file) {
+    if (file.isNull()) {
+      return;
+    }
+
     if (file.isStream()) {
-      throw Error('gulp-ng-template2js does not support streaming.');
+      return this.emit('error',
+        new gutil.PluginError('gulp-ng-template2js', 'Streaming not supported'));
     }
 
     if (file.isBuffer()) {
@@ -64,8 +70,9 @@ module.exports = function (opts) {
       moduleName: opts.name,
       modules: _.map(templateModuleNames, function (name) { return '"' + name + '"'; }).join(', ')
     });
-
-    lastFile.contents = new Buffer(topLevelModule + '\n' + templateModules);
+    if (typeof lastFile !== 'undefined') {
+      lastFile.contents = new Buffer(topLevelModule + '\n' + templateModules);
+    }
 
     this.emit('data', lastFile);
     this.emit('end');
